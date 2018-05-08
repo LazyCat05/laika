@@ -1,5 +1,5 @@
-[![Build Status](https://codeship.com/projects/b8d617b0-3528-0136-09f3-3e151ebb66ce/status?branch=master)
-[![Code Climate](https://codeclimate.com/github/LazyCat05/laika/badges/gpa.svg)](https://codeclimate.com/github/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>)
+[![Build Status](https://codeship.com/projects/b8d617b0-3528-0136-09f3-3e151ebb66ce/status?branch=master)]
+[![Code Climate](https://codeclimate.com/github/LazyCat05/laika/badges/gpa.svg)](https://codeclimate.com/github/LazyCat05/laika)
 [![Coverage Status](https://coveralls.io/repos/github/LazyCat05/laika/badge.svg?branch=master)](https://coveralls.io/github/LazyCat05/laika?branch=master)
 
 
