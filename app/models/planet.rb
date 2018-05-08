@@ -1,5 +1,5 @@
 require 'date'
-require 'math'
+
 class Planet < ApplicationRecord
   def to_radians(degrees)
     radians = degrees * ( Math::PI / 180)
@@ -67,10 +67,10 @@ class Planet < ApplicationRecord
   end
 
   def ecliptic_coords(distance, longitude_of_the_ascending_node, true_anomaly, argument_of_perihelion, inclination)
-    longitude_of_the_ascending_node = degrees_to_radians(longitude_of_the_ascending_node)
-    true_anomaly = degrees_to_radians(true_anomaly)
-    argument_of_perihelion = degrees_to_radians(argument_of_perihelion)
-    inclination = degrees_to_radians(inclination)
+    longitude_of_the_ascending_node = to_radians(longitude_of_the_ascending_node)
+    true_anomaly = to_radians(true_anomaly)
+    argument_of_perihelion = to_radians(argument_of_perihelion)
+    inclination = to_radians(inclination)
     xecliptic_coord = distance * (Math.cos(longitude_of_the_ascending_node) * Math.cos(true_anomaly + argument_of_perihelion) - Math.sin(longitude_of_the_ascending_node) * Math.sin(true_anomaly + argument_of_perihelion) * Math.cos(inclination))
     yecliptic_coord = distance * (Math.sin(longitude_of_the_ascending_node) * Math.cos(true_anomaly + argument_of_perihelion) + Math.cos(longitude_of_the_ascending_node) * Math.sin(true_anomaly + argument_of_perihelion) * Math.cos(inclination))
     zecliptic_coord = distance * Math.sin(true_anomaly + argument_of_perihelion) * Math.sin(inclination)
@@ -82,16 +82,16 @@ class Planet < ApplicationRecord
   end
 
   def ecliptic_latitude(argument_of_latitude, inclination)
-    argument_of_latitude = degrees_to_radians(argument_of_latitude)
-    inclination = degrees_to_radians(inclination)
+    argument_of_latitude = to_radians(argument_of_latitude)
+    inclination = to_radians(inclination)
     sin_b = Math.sin(argument_of_latitude) * Math.sin(inclination)
     b = Math.asin(sin_b)
-    radians_to_degrees(b)
+    to_degrees(b)
   end
 
   def heliocentric_coorinates (distance, longitude, latitude)
-    longitude = degrees_to_radians(longitude)
-    latitude = degrees_to_radians(latitude)
+    longitude = to_radians(longitude)
+    latitude = to_radians(latitude)
     coordinate_array = []
     x = distance * Math.cos(latitude) * Math.cos(longitude)
     coordinate_array << x
@@ -102,19 +102,19 @@ class Planet < ApplicationRecord
     coordinate_array
   end
 
-  def self.coordinates(time_in_centuries)
+  def coordinates(date)
     puts self.name
-    planet_mean_longitude = calculate_parameter(self.mean_longitude, self.mean_longitude_correction, time_in_centuries) % 360
+    planet_mean_longitude = calculate_parameter(self.mean_longitude, self.mean_longitude_correction, date) % 360
     puts "L = #{planet_mean_longitude}"
-    planet_semimajor_axis = calculate_parameter(self.semimajor_axis, self.semimajor_axis_correction, time_in_centuries)
+    planet_semimajor_axis = calculate_parameter(self.semimajor_axis, self.semimajor_axis_correction, date)
     puts "a = #{planet_semimajor_axis}"
-    planet_eccentricity = calculate_parameter(self.eccentricity, self.eccentricity_correction, time_in_centuries)
+    planet_eccentricity = calculate_parameter(self.eccentricity, self.eccentricity_correction, date)
     puts "e = #{planet_eccentricity}"
-    planet_inclination = calculate_parameter(self.inclination, self.inclination_correction, time_in_centuries)
+    planet_inclination = calculate_parameter(self.inclination, self.inclination_correction, date)
     puts "i = #{planet_inclination}"
-    planet_longitude_of_perihelion = calculate_parameter(self.longitude_of_perihelion, self.longitude_of_perihelion_correction, time_in_centuries)
+    planet_longitude_of_perihelion = calculate_parameter(self.longitude_of_perihelion, self.longitude_of_perihelion_correction, date)
     puts "p = #{planet_longitude_of_perihelion}"
-    planet_longitude_of_the_ascending_node = calculate_parameter(self.ascending_node_longitude, self.ascending_node_longitude_correction, time_in_centuries)
+    planet_longitude_of_the_ascending_node = calculate_parameter(self.ascending_node_longitude, self.ascending_node_longitude_correction, date)
     puts "W = #{planet_longitude_of_the_ascending_node}"
     planet_argument_of_perihelion = calc_argument_of_perihelion(planet_longitude_of_perihelion, planet_longitude_of_the_ascending_node)
     puts "w = #{planet_argument_of_perihelion}"
@@ -124,7 +124,7 @@ class Planet < ApplicationRecord
     puts "R(p) = #{planet_perihelion}"
     planet_aphelion = aphelion_distance(planet_semimajor_axis, planet_eccentricity)
     puts "R(a) = #{planet_aphelion}"
-    planet_eccentric_anomaly = eccentric_anomaly_radians(planet_mean_anomaly, planet_eccentricity, planet_longitude_of_perihelion)
+    planet_eccentric_anomaly = eccentric_anomaly(planet_mean_anomaly, planet_eccentricity, planet_longitude_of_perihelion)
     puts "E = #{planet_eccentric_anomaly}"
     planet_true_anomaly = true_anomaly(planet_semimajor_axis, planet_eccentric_anomaly, planet_eccentricity)
     puts "n = #{planet_true_anomaly}"
@@ -141,7 +141,7 @@ class Planet < ApplicationRecord
     planet_ecliptic_latitude = ecliptic_latitude(planet_argument_of_latitude, planet_inclination)
     planet_heliocentric_coords = heliocentric_coorinates(planet_distance_from_primary, planet_longitude, planet_ecliptic_latitude)
     puts ""
-    puts "Coordinates #{self.[:object_name]}:"
+    puts "Coordinates #{self.name}:"
     puts "d = #{planet_distance_from_primary}"
     puts "Latitude (b) = #{planet_ecliptic_latitude}"
     puts "Longitude (lon) = #{planet_longitude}"
