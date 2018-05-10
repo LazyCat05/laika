@@ -1,6 +1,9 @@
 require 'date'
 
 class Planet < ApplicationRecord
+  has_many :origins
+  has_many :destinations
+
   def to_radians(degrees)
     radians = degrees * ( Math::PI / 180)
   end
@@ -29,7 +32,7 @@ class Planet < ApplicationRecord
   def mean_anomaly_outer_planet(mean_longitude, argument_of_perihelion, b_outer_correction, c_outer_correction, f_outer_correction, s_outer_correction, date)
     julian_date = (date.ajd.to_f - 2451545.0)/36525
     if c_outer_correction == nil || f_outer_correction == nil || s_outer_correction == nil
-      value = value = mean_longitude - argument_of_perihelion + b_outer_correction * julian_date ** 2 
+      value = value = mean_longitude - argument_of_perihelion + b_outer_correction * julian_date ** 2
     else
       value = mean_longitude - argument_of_perihelion + b_outer_correction * julian_date ** 2 + c_outer_correction * Math.cos(f_outer_correction * julian_date) + s_outer_correction * Math.sin(f_outer_correction * julian_date)
     end

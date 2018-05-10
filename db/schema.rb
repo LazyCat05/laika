@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_08_144055) do
+ActiveRecord::Schema.define(version: 2018_05_10_144906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "destinations", force: :cascade do |t|
+    t.bigint "planet_id"
+    t.bigint "flight_id"
+    t.index ["flight_id"], name: "index_destinations_on_flight_id"
+    t.index ["planet_id"], name: "index_destinations_on_planet_id"
+  end
+
+  create_table "flights", force: :cascade do |t|
+    t.string "name"
+    t.string "distance"
+    t.date "departure_date"
+    t.date "arrival_date"
+  end
+
+  create_table "origins", force: :cascade do |t|
+    t.bigint "planet_id"
+    t.bigint "flight_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flight_id"], name: "index_origins_on_flight_id"
+    t.index ["planet_id"], name: "index_origins_on_planet_id"
+  end
 
   create_table "planets", force: :cascade do |t|
     t.string "name"
