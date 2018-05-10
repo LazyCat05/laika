@@ -5,8 +5,9 @@ class FlightContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-
+      flight: {}
     }
+    this.addNewFlight = this.addNewFlight.bind(this)
   }
 
   addNewFlight(formPayload) {
@@ -26,11 +27,13 @@ class FlightContainer extends React.Component {
       })
       .then(response => response.json())
       .then(responseFlight => {
-        this.setState({ flight: responseFlight})
+        console.log(responseFlight)
+        this.setState({ flight: responseFlight })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
   render() {
+    console.log(this.state.flight)
     return(
       <div>
         <FlightForm
