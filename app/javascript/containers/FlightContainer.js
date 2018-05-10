@@ -29,15 +29,11 @@ class FlightContainer extends React.Component {
       })
       .then(response => response.json())
       .then(responseJSON => {
-        console.log(responseJSON.flight)
         this.setState({ flight: responseJSON.flight })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
   render() {
-    console.log(this.state.flight)
-    // console.log(this.state.flight.distance)
-    // console.log(this.state.flight.departure_date)
     let infoBlock
     if (this.state.flight){
       infoBlock = <FlightInfo

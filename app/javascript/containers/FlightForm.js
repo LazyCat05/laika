@@ -40,10 +40,6 @@ class FlightForm extends React.Component {
     }
 
     render() {
-      console.log(this.state.flightOrigin)
-      console.log(this.state.flightDestination)
-      console.log(this.state.departureDate)
-
       return(
         <div>
           <h3>New Flight</h3>
