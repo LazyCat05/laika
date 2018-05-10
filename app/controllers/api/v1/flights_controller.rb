@@ -2,7 +2,7 @@ class Api::V1::FlightsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def index
-    render json: { flights: Flight.all}
+    render json: Flight.all
   end
 
   def create

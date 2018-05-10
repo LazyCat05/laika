@@ -1,16 +1,18 @@
 import React from 'react'
 import FlightForm from './FlightForm'
+import FlightInfo from '../components/FlightInfo'
 
 class FlightContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      flight: {}
+      flight: null
     }
     this.addNewFlight = this.addNewFlight.bind(this)
   }
 
   addNewFlight(formPayload) {
+    console.log(formPayload)
     fetch('/api/v1/flights.json', {
       credentials: 'same-origin',
       method: 'post',
@@ -26,19 +28,32 @@ class FlightContainer extends React.Component {
         }
       })
       .then(response => response.json())
-      .then(responseFlight => {
-        console.log(responseFlight)
-        this.setState({ flight: responseFlight })
+      .then(responseJSON => {
+        console.log(responseJSON.flight)
+        this.setState({ flight: responseJSON.flight })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
   render() {
     console.log(this.state.flight)
+    // console.log(this.state.flight.distance)
+    // console.log(this.state.flight.departure_date)
+    let infoBlock
+    if (this.state.flight){
+      infoBlock = <FlightInfo
+        departure_date = {this.state.flight.departure_date}
+        origin = {this.state.flight.origin_planet}
+        originCoordinates = {this.state.flight.origin_coordinates}
+        destination = {this.state.flight.destination_planet}
+        destinationCoordinates = {this.state.flight.destination_coordinates}
+        distance = {this.state.flight.distance}
+        />
+    }
     return(
       <div>
         <FlightForm
         addNewFlight = {this.addNewFlight}/>
-        <h4>Flight Info goes here</h4>
+        {infoBlock}
       </div>
     )
   }
