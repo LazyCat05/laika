@@ -26,6 +26,44 @@ class Flight < ApplicationRecord
   to_degrees(angular_sep_value)
   end
 
+  def calc_required_phase_angle(origin_planet_distance, destination_planet_distance)
+    mu = 1.32715 * 10 ** 20
+    origin_planet_distance = origin_planet_distance * 1.496 * 10 ** 11
+    destination_planet_distance = destination_planet_distance * 1.496 * 10 ** 11
+    phase_angle = (Math::PI) * (1 - ((1 / (2 * Math.sqrt(2)))) * Math.sqrt((origin_planet_distance/destination_planet_distance + 1) ** 3))
+    phase_angle = to_degrees(phase_angle)
+    if phase_angle < 0
+      phase_angle + 360
+    end
+  end
+
+  def launch_window_iterator(origin_planet, destination_planet, date)
+    initial_date = date.ajd.to_f
+    time_value = ((initial_date - 2415020) / 36525).to_f
+    planet_1_coordinates = origin_planet.coordinates(date)
+    planet_2_coordinates = destination_planet.coordinates(date)
+    separation = calc_angular_separation(planet_1_coordinates, planet_2_coordinates)
+    separation_lower_bound = separation * 0.99
+    separation_upper_bound = separation * 1.01
+    target_angle = calc_required_phase_angle(planet_1_coordinates[5], planet_2_coordinates[5])
+    launch_window_date = date
+    while !target_angle.between?(separation_lower_bound, separation_upper_bound) do
+      launch_window_date = launch_window_date + 1
+      time_value = ((launch_window_date.ajd.to_f - 2415020) / 36525.0)
+      planet_1_coordinates = origin_planet.coordinates(launch_window_date)
+      planet_2_coordinates = destination_planet.coordinates(launch_window_date)
+      separation = calc_angular_separation(planet_1_coordinates, planet_2_coordinates)
+      separation_lower_bound = separation * 0.99
+      separation_upper_bound = separation * 1.01
+      target_angle = calc_required_phase_angle(planet_1_coordinates[5], planet_2_coordinates[5])
+      puts "#{separation}"
+      puts "#{target_angle}"
+    end
+    puts "#{launch_window_date}"
+    launch_window_date
+  end
+
+
   def hohmann_transfer_delta_v (distance_planet1, distance_planet2)
   mu = 1.32715 * 10 ** 20
   distance_planet1 = distance_planet1 * 1.496 * 10 ** 11

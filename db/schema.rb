@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_05_11_031942) do
     t.date "arrival_date"
     t.float "delta_v"
     t.float "angular_separation"
+    t.date "launch_date"
   end
 
   create_table "origins", force: :cascade do |t|

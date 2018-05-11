@@ -43,6 +43,9 @@ class FlightContainer extends React.Component {
         destination = {this.state.flight.destination_planet}
         destinationCoordinates = {this.state.flight.destination_coordinates}
         distance = {this.state.flight.distance}
+        deltaV = {this.state.flight.delta_v}
+        angularSeparation = {this.state.flight.angular_separation}
+        launchDate = {this.state.flight.launch_date}
         />
     }
     return(
