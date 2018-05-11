@@ -19,6 +19,8 @@ class Api::V1::FlightsController < ApplicationController
     destination_position = destination_planet.coordinates(departure_date)
     distance = new_flight.interplanetary_distance(origin_position, destination_position)
     new_flight.distance = distance
+    new_flight.delta_v = new_flight.hohmann_transfer_delta_v(origin_position[5], destination_position[5])
+    new_flight.angular_separation = new_flight.calc_angular_separation(origin_position, destination_position)
 
     render json: new_flight
   end

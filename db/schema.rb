@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_10_144906) do
+ActiveRecord::Schema.define(version: 2018_05_11_031942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2018_05_10_144906) do
     t.string "distance"
     t.date "departure_date"
     t.date "arrival_date"
+    t.float "delta_v"
+    t.float "angular_separation"
   end
 
   create_table "origins", force: :cascade do |t|
