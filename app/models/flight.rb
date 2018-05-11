@@ -33,8 +33,9 @@ class Flight < ApplicationRecord
     phase_angle = (Math::PI) * (1 - ((1 / (2 * Math.sqrt(2)))) * Math.sqrt((origin_planet_distance/destination_planet_distance + 1) ** 3))
     phase_angle = to_degrees(phase_angle)
     if phase_angle < 0
-      phase_angle + 360
+      phase_angle = - phase_angle
     end
+    phase_angle % 360
   end
 
   def launch_window_iterator(origin_planet, destination_planet, date)
@@ -58,6 +59,7 @@ class Flight < ApplicationRecord
       target_angle = calc_required_phase_angle(planet_1_coordinates[5], planet_2_coordinates[5])
       puts "#{separation}"
       puts "#{target_angle}"
+      # binding.pry
     end
     puts "#{launch_window_date}"
     launch_window_date
