@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :flights do
-        resources :planets        
+        collection do
+          post 'save'
+        end
+        # resources :planets
       end
     end
   end
