@@ -44,7 +44,6 @@ class Api::V1::FlightsController < ApplicationController
     destination_position = destination_planet.coordinates(departure_date)
     distance = new_flight.interplanetary_distance(origin_position, destination_position)
     new_flight.distance = distance
-    binding.pry
     new_flight.name = "#{new_flight.origin.planet.name} - #{new_flight.destination.planet.name} #{new_flight.departure_date}"
     message = {body: ""}
     if new_flight.valid?
