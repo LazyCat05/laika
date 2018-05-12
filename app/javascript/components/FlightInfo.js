@@ -1,7 +1,6 @@
 import React from 'react'
 
 const FlightInfo = (props) => {
-  console.log(props)
   return (
     <div>
       <h5>Flight Information</h5>
