@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         end
         # resources :planets
       end
+      resources :missions
     end
   end
 end
