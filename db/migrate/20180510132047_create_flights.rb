@@ -5,6 +5,7 @@ class CreateFlights < ActiveRecord::Migration[5.2]
       t.string :distance
       t.date :departure_date
       t.date :arrival_date
+      t.belongs_to :mission
     end
   end
 end

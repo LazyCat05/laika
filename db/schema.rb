@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_11_031942) do
+ActiveRecord::Schema.define(version: 2018_05_11_194611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,21 @@ ActiveRecord::Schema.define(version: 2018_05_11_031942) do
     t.string "distance"
     t.date "departure_date"
     t.date "arrival_date"
+    t.bigint "mission_id"
     t.float "delta_v"
     t.float "angular_separation"
     t.date "launch_date"
+    t.index ["mission_id"], name: "index_flights_on_mission_id"
+  end
+
+  create_table "missions", force: :cascade do |t|
+    t.string "name"
+    t.float "total_delta_v"
+    t.integer "total_mission_duration"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_missions_on_user_id"
   end
 
   create_table "origins", force: :cascade do |t|
