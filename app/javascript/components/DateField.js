@@ -2,7 +2,7 @@ import React from 'react';
 
 const DateField = (props) => {
   return (
-    <label>
+    <label> {props.label}
       <input
         name={props.name}
         type='date'

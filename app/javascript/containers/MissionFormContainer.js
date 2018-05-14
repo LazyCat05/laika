@@ -33,10 +33,12 @@ class MissionFormContainer extends React.Component {
 
   render(){
     return(
-    <div>
-      <MissionForm
-        addNewMission = {this.addNewMission}
-      />
+    <div className='row'>
+      <div className='column small 10'>
+        <MissionForm
+          addNewMission = {this.addNewMission}
+        />
+      </div>
     </div>
   )
   }

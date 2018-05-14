@@ -23,7 +23,9 @@ class MissionForm extends React.Component {
       <div>
         <h3>New Mission</h3>
         <form onSubmit={this.handleSubmit}>
-          <NameField />
+          <NameField
+            label="Mission Name"
+          />
           <input type='submit' value='New Mission' />
         </form>
       </div>

@@ -83,15 +83,17 @@ class FlightContainer extends React.Component {
           />
     }
     return(
-      <div>
-        <div>
-          <Link to='missions/new'>Add New Mission</Link>
-        </div>
-        <FlightForm
-        addNewFlight = {this.addNewFlight}/>
-        <div>
-          {infoBlock}
-          {saveFlightButton}
+      <div className='row'>
+        <div className='columns small-10'>
+          <div>
+            <Link to='missions/new'>Add New Mission</Link>
+          </div>
+          <FlightForm
+            addNewFlight = {this.addNewFlight}/>
+            <div>
+              {infoBlock}
+              {saveFlightButton}
+            </div>
         </div>
       </div>
     )
