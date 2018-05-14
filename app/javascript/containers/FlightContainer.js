@@ -63,21 +63,24 @@ class FlightContainer extends React.Component {
     let infoBlock
     let saveFlightButton
     if (this.state.flight){
-      infoBlock = <FlightInfo
-        departure_date = {this.state.flight.departure_date}
-        origin = {this.state.flight.origin_planet}
-        originCoordinates = {this.state.flight.origin_coordinates}
-        destination = {this.state.flight.destination_planet}
-        destinationCoordinates = {this.state.flight.destination_coordinates}
-        distance = {this.state.flight.distance}
-        deltaV = {this.state.flight.delta_v}
-        angularSeparation = {this.state.flight.angular_separation}
-        launchDate = {this.state.flight.launch_date}
-        />
+      infoBlock =
+        <div className ='callout'>
+          <FlightInfo
+          departure_date = {this.state.flight.departure_date}
+          origin = {this.state.flight.origin_planet}
+          originCoordinates = {this.state.flight.origin_coordinates}
+          destination = {this.state.flight.destination_planet}
+          destinationCoordinates = {this.state.flight.destination_coordinates}
+          distance = {this.state.flight.distance}
+          deltaV = {this.state.flight.delta_v}
+          angularSeparation = {this.state.flight.angular_separation}
+          launchDate = {this.state.flight.launch_date}
+          />
+        </div>
       saveFlightButton = <SaveFlightForm
-        saveFlight = {this.saveFlight}
-        flight = {this.state.flight}
-        />
+          saveFlight = {this.saveFlight}
+          flight = {this.state.flight}
+          />
     }
     return(
       <div>

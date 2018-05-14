@@ -5,4 +5,7 @@ class Api::V1::MissionsController < ApplicationController
     render json: Mission.all
   end
 
+  def create
+  end
+
 end
