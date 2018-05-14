@@ -71,7 +71,7 @@ class MissionFormContainer extends React.Component {
         <div>
           <FlightForm
             addNewFlight={this.addNewFlight}
-            missionId ={this.state.mission}
+            missionId ={this.state.mission.id}
           />
         </div>
     }
@@ -80,6 +80,7 @@ class MissionFormContainer extends React.Component {
       <FlightInfo
         key = {flight.delta_v}
         departure_date = {flight.departure_date}
+        arrival_date = {flight.arrival_date}
         origin = {flight.origin_planet}
         originCoordinates = {flight.origin_coordinates}
         destination = {flight.destination_planet}
@@ -88,6 +89,7 @@ class MissionFormContainer extends React.Component {
         deltaV = {flight.delta_v}
         angularSeparation = {flight.angular_separation}
         launchDate = {flight.launch_date}
+        flight_time = {flight.time_of_flight}
       />
     )
     })

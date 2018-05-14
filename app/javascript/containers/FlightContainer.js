@@ -32,6 +32,7 @@ class FlightContainer extends React.Component {
       })
       .then(response => response.json())
       .then(responseJSON => {
+        console.log(responseJSON.flight)
         this.setState({ flight: responseJSON.flight })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -68,14 +69,16 @@ class FlightContainer extends React.Component {
           <div className='column small-12'>
             <FlightInfo
               departure_date = {this.state.flight.departure_date}
+              arrival_date = {this.state.flight.arrival_date}
+              flight_time = {this.state.flight.time_of_flight}
               origin = {this.state.flight.origin_planet}
               originCoordinates = {this.state.flight.origin_coordinates}
               destination = {this.state.flight.destination_planet}
               destinationCoordinates = {this.state.flight.destination_coordinates}
               distance = {this.state.flight.distance}
               deltaV = {this.state.flight.delta_v}
-              angularSeparation = {this.state.flight.angular_separation}
               launchDate = {this.state.flight.launch_date}
+              arrival_date = {this.state.flight.arrival_date}
             />
           </div>
         </div>

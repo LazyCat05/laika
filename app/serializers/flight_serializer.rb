@@ -1,5 +1,5 @@
 class FlightSerializer < ActiveModel::Serializer
-  attributes :id, :name, :departure_date, :distance, :origin_planet, :origin_coordinates, :destination_planet, :destination_coordinates, :delta_v, :angular_separation, :launch_date
+  attributes :id, :name, :departure_date, :distance, :origin_planet, :origin_coordinates, :destination_planet, :destination_coordinates, :delta_v, :angular_separation, :launch_date, :time_of_flight, :arrival_date
 
   def origin_planet
     object.origin.planet.name

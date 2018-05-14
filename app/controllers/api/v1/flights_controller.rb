@@ -14,6 +14,9 @@ class Api::V1::FlightsController < ApplicationController
     new_flight = Flight.new(departure_date: departure_date)
     Origin.new(flight: new_flight, planet: origin_planet)
     Destination.new(flight: new_flight, planet: destination_planet)
+    if data['missionId']
+      new_flight.mission_id = data['missionId']
+    end
 
     origin_position = origin_planet.coordinates(departure_date)
     destination_position = destination_planet.coordinates(departure_date)
@@ -26,6 +29,11 @@ class Api::V1::FlightsController < ApplicationController
     origin_position_launch = origin_planet.coordinates(launch_date)
     destination_position_launch = destination_planet.coordinates(launch_date)
     new_flight.delta_v = new_flight.hohmann_transfer_delta_v(origin_position_launch[5], destination_position_launch[5])
+    new_flight.time_of_flight = new_flight.hohmann_transit_time(origin_position_launch[5], destination_position_launch[5])
+    new_flight.arrival_date = new_flight.launch_date + new_flight.time_of_flight.to_i
+    if new_flight.valid?
+      new_flight.save
+    end
 
     render json: new_flight
   end
