@@ -8,10 +8,15 @@ class MissionForm extends React.Component {
       missionName: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleMissionName = this.handleMissionName.bind(this)
+  }
+
+  handleMissionName(event) {
+    this.setState({ missionName: event.target.value })
   }
 
   handleSubmit(event) {
-    event.PreventDefault()
+    event.preventDefault()
     let formPayload = {
       missionName: this.state.missionName
     }
@@ -20,11 +25,12 @@ class MissionForm extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className = 'small-box-border'>
         <h3>New Mission</h3>
         <form onSubmit={this.handleSubmit}>
           <NameField
             label="Mission Name"
+            handleInput={this.handleMissionName}
           />
           <input type='submit' value='New Mission' />
         </form>

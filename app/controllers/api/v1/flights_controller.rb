@@ -46,7 +46,6 @@ class Api::V1::FlightsController < ApplicationController
     new_flight.distance = distance
     new_flight.name = "#{new_flight.origin.planet.name} - #{new_flight.destination.planet.name} #{new_flight.departure_date}"
     message = {body: ""}
-    binding.pry
     if new_flight.valid?
       new_flight.save
       message[:body] = "Flight saved"

@@ -64,18 +64,20 @@ class FlightContainer extends React.Component {
     let saveFlightButton
     if (this.state.flight){
       infoBlock =
-        <div className ='callout'>
-          <FlightInfo
-          departure_date = {this.state.flight.departure_date}
-          origin = {this.state.flight.origin_planet}
-          originCoordinates = {this.state.flight.origin_coordinates}
-          destination = {this.state.flight.destination_planet}
-          destinationCoordinates = {this.state.flight.destination_coordinates}
-          distance = {this.state.flight.distance}
-          deltaV = {this.state.flight.delta_v}
-          angularSeparation = {this.state.flight.angular_separation}
-          launchDate = {this.state.flight.launch_date}
-          />
+        <div className='row'>
+          <div className='column small-12'>
+            <FlightInfo
+              departure_date = {this.state.flight.departure_date}
+              origin = {this.state.flight.origin_planet}
+              originCoordinates = {this.state.flight.origin_coordinates}
+              destination = {this.state.flight.destination_planet}
+              destinationCoordinates = {this.state.flight.destination_coordinates}
+              distance = {this.state.flight.distance}
+              deltaV = {this.state.flight.delta_v}
+              angularSeparation = {this.state.flight.angular_separation}
+              launchDate = {this.state.flight.launch_date}
+            />
+          </div>
         </div>
       saveFlightButton = <SaveFlightForm
           saveFlight = {this.saveFlight}
@@ -89,7 +91,9 @@ class FlightContainer extends React.Component {
             <Link to='missions/new'>Add New Mission</Link>
           </div>
           <FlightForm
-            addNewFlight = {this.addNewFlight}/>
+            addNewFlight = {this.addNewFlight}
+            missionId = {null}
+            />
             <div>
               {infoBlock}
               {saveFlightButton}

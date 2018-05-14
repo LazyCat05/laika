@@ -27,3 +27,17 @@ div {
 h1, h2, h3, h4, h5, h6, p, label {
   color: #ADD8E6;
 }
+
+.small-box-border {
+  border: .1rem solid #ADD8E6;
+  padding: .5rem;
+  margin: .5rem;
+}
+
+.coordinate-boxes-left {
+  padding-left: 3rem;
+}
+
+.coordinate-boxes-right{
+  padding-right: 3rem;
+}
