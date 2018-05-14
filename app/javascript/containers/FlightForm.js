@@ -9,7 +9,8 @@ class FlightForm extends React.Component {
         flightOrigin: '',
         flightDestination: '',
         departureDate: '',
-        arrivalDate: ''
+        arrivalDate: '',
+        missionId: this.props.missionId
       }
       this.handleOriginSelection = this.handleOriginSelection.bind(this)
       this.handleDestinationSelection = this.handleDestinationSelection.bind(this)
@@ -34,14 +35,15 @@ class FlightForm extends React.Component {
       let formPayload = {
         flightOrigin: this.state.flightOrigin,
         flightDestination: this.state.flightDestination,
-        departureDate: this.state.departureDate
+        departureDate: this.state.departureDate,
+        missionId: this.state.missionId
       }
       this.props.addNewFlight(formPayload)
     }
 
     render() {
       return(
-        <div>
+        <div className="small-box-border">
           <h3>New Flight</h3>
           <form onSubmit={this.handleSubmit}>
             <PlanetSelectField
