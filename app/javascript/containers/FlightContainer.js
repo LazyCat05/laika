@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import FlightForm from './FlightForm'
 import FlightInfo from '../components/FlightInfo'
 import SaveFlightForm from '../components/SaveFlightForm'
@@ -80,6 +81,9 @@ class FlightContainer extends React.Component {
     }
     return(
       <div>
+        <div>
+          <Link to='missions/new'>Add New Mission</Link>
+        </div>
         <FlightForm
         addNewFlight = {this.addNewFlight}/>
         <div>
