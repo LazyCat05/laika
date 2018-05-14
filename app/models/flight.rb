@@ -82,4 +82,14 @@ class Flight < ApplicationRecord
   arrival_delta_v = arrival_burn_velocity - orbit_velocity_destination
   delta_v = delta_v_insertion_burn.abs + arrival_delta_v.abs
   end
+
+  def hohmann_transit_time (distance_planet1, distance_planet2)
+    mu = 1.32715 * 10 ** 20
+    distance_planet1 = distance_planet1 * 1.496 * 10 ** 11
+    distance_planet2 = distance_planet2 * 1.496 * 10 ** 11
+    transfer_semimajor_axis = (distance_planet1 + distance_planet2) / 2
+    time_in_seconds = 0.5 * Math.sqrt((4 * Math::PI ** 2 * transfer_semimajor_axis ** 3) / mu )
+    time_in_days = time_in_seconds / 86400
+  end
+
 end
