@@ -31,7 +31,10 @@ class MissionFormContainer extends React.Component {
     .then(response => response.json())
     .then(responseJSON => {
       console.log(responseJSON)
-      this.setState({ mission: responseJSON })
+      this.setState({
+        mission: responseJSON,
+        flights: []
+       })
       console.log(this.state.mission)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
