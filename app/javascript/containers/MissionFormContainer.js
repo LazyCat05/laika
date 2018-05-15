@@ -36,7 +36,6 @@ class MissionFormContainer extends React.Component {
         mission: responseJSON.mission,
         flights: []
        })
-      console.log(this.state.mission)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }

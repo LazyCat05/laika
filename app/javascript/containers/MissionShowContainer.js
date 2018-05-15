@@ -74,9 +74,6 @@ class MissionShowContainer extends React.Component {
         />
     }
     let flights = this.state.flights.map(flight => {
-      // let delta_v = flight.delta_v.toFixed(2)
-      // let flightTime = flight.time_of_flight.toFixed()
-      // let flightDistance = flight.distance.toFixed(2)
       return(
       <FlightInfo
         key = {flight.id}
@@ -98,7 +95,11 @@ class MissionShowContainer extends React.Component {
     return(
       <div className='row'>
         <div className='columns medium-6' >
-          <MissionInfo />
+          <MissionInfo
+            missionName={this.state.mission.name}
+            deltaV={this.state.mission.total_delta_v}
+            missionDuration={this.state.mission.total_mission_duration}
+          />
         </div>
         <div className= 'columns medium-6'>
           {flights}
