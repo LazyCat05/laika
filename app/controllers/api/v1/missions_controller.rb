@@ -14,4 +14,8 @@ class Api::V1::MissionsController < ApplicationController
     render json: new_mission
   end
 
+  def show
+    render json: Mission.find(params[:id])
+  end
+
 end
