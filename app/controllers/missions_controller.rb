@@ -5,4 +5,7 @@ class MissionsController < ApplicationController
   def new
   end
 
+  def show
+  end
+
 end
