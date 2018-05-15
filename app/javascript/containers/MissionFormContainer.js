@@ -7,7 +7,9 @@ class MissionFormContainer extends React.Component {
   constructor(props){
     super(props)
     this.state ={
-      mission: {},
+      mission: {
+        id: null
+      },
       flights: []
     }
     this.addNewMission = this.addNewMission.bind(this)
@@ -31,7 +33,7 @@ class MissionFormContainer extends React.Component {
     .then(response => response.json())
     .then(responseJSON => {
       this.setState({
-        mission: responseJSON,
+        mission: responseJSON.mission,
         flights: []
        })
       console.log(this.state.mission)
@@ -66,21 +68,18 @@ class MissionFormContainer extends React.Component {
 
 
   render(){
-    console.log(this.state.flights)
     let flightFormDiv
-    if (this.state.mission.id != undefined) {
+    if(this.state.mission.id != null) {
       flightFormDiv =
-        <div>
-          <FlightForm
-            addNewFlight={this.addNewFlight}
-            missionId ={this.state.mission.id}
-          />
-        </div>
+        <FlightForm
+          addNewFlight={this.addNewFlight}
+          missionId ={this.state.mission.id}
+        />
     }
     let flights = this.state.flights.map(flight => {
       return(
       <FlightInfo
-        key = {flight.delta_v}
+        key = {flight.id}
         departure_date = {flight.departure_date}
         arrival_date = {flight.arrival_date}
         origin = {flight.origin_planet}
@@ -97,7 +96,7 @@ class MissionFormContainer extends React.Component {
     })
     return(
     <div className='row'>
-      <div className='column small 10'>
+      <div className='column small-10'>
         <MissionForm
           addNewMission={this.addNewMission}
         />

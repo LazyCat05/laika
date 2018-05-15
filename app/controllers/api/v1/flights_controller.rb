@@ -17,7 +17,6 @@ class Api::V1::FlightsController < ApplicationController
     if data['missionId']
       new_flight.mission_id = data['missionId']
     end
-
     origin_position = origin_planet.coordinates(departure_date)
     destination_position = destination_planet.coordinates(departure_date)
     distance = new_flight.interplanetary_distance(origin_position, destination_position)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_14_185714) do
+ActiveRecord::Schema.define(version: 2018_05_15_202615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2018_05_14_185714) do
 
   create_table "flights", force: :cascade do |t|
     t.string "name"
-    t.string "distance"
     t.date "departure_date"
     t.date "arrival_date"
     t.bigint "mission_id"
@@ -32,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_05_14_185714) do
     t.float "angular_separation"
     t.date "launch_date"
     t.float "time_of_flight"
+    t.float "distance"
     t.index ["mission_id"], name: "index_flights_on_mission_id"
   end
 
