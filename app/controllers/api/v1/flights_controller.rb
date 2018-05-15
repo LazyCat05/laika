@@ -25,6 +25,7 @@ class Api::V1::FlightsController < ApplicationController
     required_angular_separation = new_flight.calc_required_phase_angle(origin_position[5], destination_position[5])
     launch_date = new_flight.launch_window_iterator(origin_planet, destination_planet, departure_date)
     new_flight.launch_date = launch_date
+    new_flight.name = "#{new_flight.origin.planet.name} - #{new_flight.destination.planet.name} #{new_flight.launch_date}"
     origin_position_launch = origin_planet.coordinates(launch_date)
     destination_position_launch = destination_planet.coordinates(launch_date)
     new_flight.delta_v = new_flight.hohmann_transfer_delta_v(origin_position_launch[5], destination_position_launch[5])
@@ -32,6 +33,9 @@ class Api::V1::FlightsController < ApplicationController
     new_flight.arrival_date = new_flight.launch_date + new_flight.time_of_flight.to_i
     if new_flight.valid?
       new_flight.save
+      mission = new_flight.mission
+      mission.total_delta_v = mission.calc_mission_delta_v
+      mission.total_mission_duration = mission.calc_mission_duration
     end
 
     render json: new_flight
@@ -51,7 +55,6 @@ class Api::V1::FlightsController < ApplicationController
     destination_position = destination_planet.coordinates(departure_date)
     distance = new_flight.interplanetary_distance(origin_position, destination_position)
     new_flight.distance = distance
-    new_flight.name = "#{new_flight.origin.planet.name} - #{new_flight.destination.planet.name} #{new_flight.departure_date}"
     message = {body: ""}
     if new_flight.valid?
       new_flight.save
