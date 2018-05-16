@@ -17,21 +17,60 @@
  */
 
 body {
-  background: #333333;
+  background: #090A11;
+  background-image: url('dennis-schweizer-629713-unsplash.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  color: #ADD8E6;
 }
 
 div {
 
 }
 
-h1, h2, h3, h4, h5, h6, p, label {
+h1, h2, h3, h4 {
+  font-family: 'Orbitron', sans-serif;
   color: #ADD8E6;
 }
+
+h5, h6, p, label {
+  font-family: 'Exo', sans-serif;
+  color: #ADD8E6;
+}
+
+select, input {
+  font-family: 'Exo', sans-serif;
+}
+
+.top-bar {
+  color: #ADD8E6;
+  background-color: #090A11AA;
+}
+
+.top-bar .name h1 a {
+  color: #ADD8E6;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+  color: #ADD8E6;
+  background-color: #090A11AA;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+  color: #ADD8E6;
+  background-color: #232329EE;
+}
+
 
 .small-box-border {
   border: .1rem solid #ADD8E6;
   padding: .5rem;
   margin: .5rem;
+  background-color: #090A11AA;
+}
+
+.fixed-box {
+  position: fixed;
 }
 
 .coordinate-boxes-left {

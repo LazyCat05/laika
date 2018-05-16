@@ -68,6 +68,7 @@ class FlightContainer extends React.Component {
         <div className='row'>
           <div className='column small-12'>
             <FlightInfo
+              name={this.state.flight.name}
               departure_date = {this.state.flight.departure_date}
               arrival_date = {this.state.flight.arrival_date}
               flight_time = {this.state.flight.time_of_flight}

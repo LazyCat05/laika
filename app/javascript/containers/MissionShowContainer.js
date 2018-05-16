@@ -1,27 +1,22 @@
 import React from 'react'
-import MissionForm from './MissionForm'
+import FlightInfo from '../components/FlightInfo';
 import FlightForm from './FlightForm'
-import FlightInfo from '../components/FlightInfo'
+import MissionInfo from '../components/MissionInfo';
 
-class MissionFormContainer extends React.Component {
+class MissionShowContainer extends React.Component {
   constructor(props){
     super(props)
-    this.state ={
-      mission: {
-        id: null
-      },
-      flights: []
+    this.state = {
+      mission: {},
+      flights: [],
+      errorMessage: ''
     }
-    this.addNewMission = this.addNewMission.bind(this)
     this.addNewFlight = this.addNewFlight.bind(this)
   }
-  addNewMission(formPayload) {
-    fetch('/api/v1/missions.json', {
-      credentials: 'same-origin',
-      method: 'post',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify(formPayload)
-    })
+
+  componentDidMount(){
+    let missionId = this.props.params.id
+    fetch(`/api/v1/missions/${missionId}`)
     .then(response => {
       if(response.ok) {
         return response;
@@ -34,10 +29,10 @@ class MissionFormContainer extends React.Component {
     .then(responseJSON => {
       this.setState({
         mission: responseJSON.mission,
-        flights: []
-       })
+        flights: responseJSON.mission.flights
+      });
     })
-    .catch(error => console.error(`Error in fetch: ${error.message}`))
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   addNewFlight(formPayload) {
@@ -63,12 +58,13 @@ class MissionFormContainer extends React.Component {
         })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
+
   }
 
 
   render(){
     let flightFormDiv
-    if(this.state.mission.id != null) {
+    if(this.state.mission.id) {
       flightFormDiv =
         <FlightForm
           addNewFlight={this.addNewFlight}
@@ -79,7 +75,7 @@ class MissionFormContainer extends React.Component {
       return(
       <FlightInfo
         key = {flight.id}
-        name = {flight.name}
+        name={flight.name}
         departure_date = {flight.departure_date}
         arrival_date = {flight.arrival_date}
         origin = {flight.origin_planet}
@@ -94,18 +90,29 @@ class MissionFormContainer extends React.Component {
       />
     )
     })
+    let missionInfoDiv
+    if(this.state.mission.hasOwnProperty('name')){
+      missionInfoDiv =
+      <MissionInfo
+        missionName={this.state.mission.name}
+        deltaV={this.state.mission.total_delta_v}
+        missionDuration={this.state.mission.total_mission_duration}
+      />
+    }
+
     return(
-    <div className='row'>
-      <div className='column small-10'>
-        <MissionForm
-          addNewMission={this.addNewMission}
-        />
-        {flights}
-        {flightFormDiv}
+      <div className='row'>
+        <div className='columns medium-6' >
+          {missionInfoDiv}
+        </div>
+        <div className= 'columns medium-6'>
+          {flights}
+          {flightFormDiv}
+        </div>
       </div>
-    </div>
-  )
+    )
   }
+
 }
 
-export default MissionFormContainer;
+export default MissionShowContainer;
