@@ -5,7 +5,7 @@ const FlightInfo = (props) => {
     <div className='row small-box-border'>
       <div className='column'>
         <div className='row'>
-          <h5>Flight Information</h5>
+          <h4>Flight: {props.name}</h4>
           <h5>Proposed Date: {props.departure_date}</h5>
           <h5>Launch Date: {props.launchDate}</h5>
           <h5>Arrival Date: {props.arrival_date}</h5>
@@ -30,6 +30,7 @@ const FlightInfo = (props) => {
           <div className="column">
             <h5>Time of Flight: {props.flight_time.toFixed()} days</h5>
             <h5>Distance (AU): {props.distance.toFixed(2)}</h5>
+            <h5>Distance (million km): {((props.distance * 1.496 * 10 ** 8) / 1000000).toFixed(2)}</h5>
             <h5>Delta-V (m/s): {props.deltaV.toFixed(2)}</h5>
           </div>
         </div>

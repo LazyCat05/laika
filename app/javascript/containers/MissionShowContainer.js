@@ -75,6 +75,7 @@ class MissionShowContainer extends React.Component {
       return(
       <FlightInfo
         key = {flight.id}
+        name={flight.name}
         departure_date = {flight.departure_date}
         arrival_date = {flight.arrival_date}
         origin = {flight.origin_planet}

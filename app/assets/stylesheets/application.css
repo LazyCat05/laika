@@ -21,20 +21,25 @@ body {
   background-image: url('dennis-schweizer-629713-unsplash.jpg');
   background-size: cover;
   background-attachment: fixed;
+  color: #ADD8E6;
 }
 
 div {
 
 }
 
+h1, h2, h3, h4 {
+  font-family: 'Orbitron', sans-serif;
+  color: #ADD8E6;
+}
 
-h1, h2, h3, h4, h5, h6, p, label {
-  font-family: 'Questrial', sans-serif;
+h5, h6, p, label {
+  font-family: 'Exo', sans-serif;
   color: #ADD8E6;
 }
 
 select, input {
-  font-family: 'Questrial', sans-serif;
+  font-family: 'Exo', sans-serif;
 }
 
 .top-bar {
