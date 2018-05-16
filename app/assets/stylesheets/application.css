@@ -17,7 +17,12 @@
  */
 
 body {
-  background: #333333;
+  background: #090A11;
+  background-image: url('dennis-schweizer-629713-unsplash.jpg');
+  /* background-image: url('adrian-pelletier-374846-unsplash.jpg'); */
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Muli', sans-serif;
 }
 
 div {
@@ -28,10 +33,15 @@ h1, h2, h3, h4, h5, h6, p, label {
   color: #ADD8E6;
 }
 
+.top-bar {
+  color: #090A11;
+}
+
 .small-box-border {
   border: .1rem solid #ADD8E6;
   padding: .5rem;
   margin: .5rem;
+  background-color: #090A11;
 }
 
 .coordinate-boxes-left {
