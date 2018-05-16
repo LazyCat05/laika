@@ -23,7 +23,7 @@ const FlightInfo = (props) => {
               <p>Coordinates:</p>
               <p>X: {props.destinationCoordinates[0].toFixed(2)}</p>
               <p>Y: {props.destinationCoordinates[1].toFixed(2)}</p>
-              <p>Z: {props.destinationCoordinates[2].toFixed()}</p>
+              <p>Z: {props.destinationCoordinates[2].toFixed(2)}</p>
             </div>
         </div>
         <div className="row">

@@ -27,7 +27,6 @@ class MissionShowContainer extends React.Component {
     })
     .then(response => response.json())
     .then(responseJSON => {
-      console.log(responseJSON)
       this.setState({
         mission: responseJSON.mission,
         flights: responseJSON.mission.flights
@@ -64,8 +63,6 @@ class MissionShowContainer extends React.Component {
 
 
   render(){
-    console.log(this.state.mission)
-    console.log(this.state.flights)
     let flightFormDiv
     if(this.state.mission.id) {
       flightFormDiv =
@@ -92,15 +89,20 @@ class MissionShowContainer extends React.Component {
       />
     )
     })
+    let missionInfoDiv
+    if(this.state.mission.hasOwnProperty('name')){
+      missionInfoDiv =
+      <MissionInfo
+        missionName={this.state.mission.name}
+        deltaV={this.state.mission.total_delta_v}
+        missionDuration={this.state.mission.total_mission_duration}
+      />
+    }
 
     return(
       <div className='row'>
         <div className='columns medium-6' >
-          <MissionInfo
-            missionName={this.state.mission.name}
-            deltaV={this.state.mission.total_delta_v}
-            missionDuration={this.state.mission.total_mission_duration}
-          />
+          {missionInfoDiv}
         </div>
         <div className= 'columns medium-6'>
           {flights}

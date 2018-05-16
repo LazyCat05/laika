@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_15_202615) do
+ActiveRecord::Schema.define(version: 2018_05_16_154906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2018_05_15_202615) do
 
   create_table "missions", force: :cascade do |t|
     t.string "name"
-    t.float "total_delta_v"
-    t.integer "total_mission_duration"
+    t.float "total_delta_v", default: 0.0
+    t.integer "total_mission_duration", default: 0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

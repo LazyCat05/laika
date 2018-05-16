@@ -19,29 +19,53 @@
 body {
   background: #090A11;
   background-image: url('dennis-schweizer-629713-unsplash.jpg');
-  /* background-image: url('adrian-pelletier-374846-unsplash.jpg'); */
   background-size: cover;
   background-attachment: fixed;
-  font-family: 'Muli', sans-serif;
 }
 
 div {
 
 }
 
+
 h1, h2, h3, h4, h5, h6, p, label {
+  font-family: 'Questrial', sans-serif;
   color: #ADD8E6;
 }
 
-.top-bar {
-  color: #090A11;
+select, input {
+  font-family: 'Questrial', sans-serif;
 }
+
+.top-bar {
+  color: #ADD8E6;
+  background-color: #090A11AA;
+}
+
+.top-bar .name h1 a {
+  color: #ADD8E6;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+  color: #ADD8E6;
+  background-color: #090A11AA;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+  color: #ADD8E6;
+  background-color: #232329EE;
+}
+
 
 .small-box-border {
   border: .1rem solid #ADD8E6;
   padding: .5rem;
   margin: .5rem;
-  background-color: #090A11;
+  background-color: #090A11AA;
+}
+
+.fixed-box {
+  position: fixed;
 }
 
 .coordinate-boxes-left {

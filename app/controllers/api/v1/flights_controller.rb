@@ -33,9 +33,12 @@ class Api::V1::FlightsController < ApplicationController
     new_flight.arrival_date = new_flight.launch_date + new_flight.time_of_flight.to_i
     if new_flight.valid?
       new_flight.save
+      binding.pry
       mission = new_flight.mission
       mission.total_delta_v = mission.calc_mission_delta_v
       mission.total_mission_duration = mission.calc_mission_duration
+      mission.save
+      binding.pry
     end
 
     render json: new_flight
