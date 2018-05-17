@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import MissionInfoTile from './MissionInfoTile'
 
 class MissionDashboard extends React.Component {
@@ -21,7 +22,6 @@ class MissionDashboard extends React.Component {
       })
       .then(response => response.json())
       .then(responseJSON => {
-        console.log(responseJSON)
         this.setState({
           missions: responseJSON.missions
         });
@@ -30,10 +30,10 @@ class MissionDashboard extends React.Component {
 
   render(){
     let missionTiles = this.state.missions.map(mission => {
-      console.log(mission)
       return(
         <MissionInfoTile
           key={mission.id}
+          id={mission.id}
           name={mission.name}
           deltaV={mission.total_delta_v}
           duration={mission.total_mission_duration}
@@ -43,9 +43,16 @@ class MissionDashboard extends React.Component {
     })
     console.log(this.state.missions)
     return(
-      <div>
-        <h2>Mission Dashboard</h2>
-        <div>
+      <div className='expanded row'>
+        <div className='row'>
+          <div className='column small-6 small-centered'>
+            <h2>Mission Dashboard</h2>
+          </div>
+          <div>
+            <Link to='missions/new'>Add New Mission</Link>
+          </div>
+        </div>
+        <div className='expanded row'>
           {missionTiles}
         </div>
       </div>

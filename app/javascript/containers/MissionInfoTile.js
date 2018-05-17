@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import FlightInfoTile from '../components/FlightInfoTile'
 
 class MissionInfoTile extends React.Component {
@@ -10,15 +11,29 @@ class MissionInfoTile extends React.Component {
   }
 
   render(){
-    console.log(this.props)
+    let flightTiles = this.props.flights.map(flight =>{
+      return(
+        <FlightInfoTile
+          key={flight.id}
+          name={flight.name}
+          arrivalDate={flight.arrival_date}
+          deltaV={flight.delta_v.toFixed(2)}
+          timeOfFlight={flight.time_of_flight.toFixed()}
+         />
+      )
+    })
     return(
-      <div className='small-box-border'>
-        <h3>Mission: {this.props.name}</h3>
-        <div>
-          <h4>Total delta-V: {this.props.deltaV.toFixed(2)}</h4>
-          <h4>Total Flight Duration: {this.props.duration}</h4>
+      <div className='card small-box-border'>
+        <Link to={`/missions/${this.props.id}`}><h3>{this.props.name}</h3></Link>
+        <div className='row'>
+          <div className="column small-6">
+            <h5>Total delta-V: {this.props.deltaV.toFixed(2)}</h5>
+          </div>
+          <div className="column small-6">
+            <h5>Total Flight Duration: {this.props.duration} days</h5>
+          </div>
         </div>
-        <FlightInfoTile />
+        {flightTiles}
       </div>
     )
   }

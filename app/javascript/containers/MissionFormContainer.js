@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import MissionForm from './MissionForm'
 import FlightForm from './FlightForm'
 import FlightInfo from '../components/FlightInfo'
@@ -96,12 +97,15 @@ class MissionFormContainer extends React.Component {
     })
     return(
     <div className='row'>
-      <div className='column small-10'>
+      <div className='column small-10 small-centered'>
         <MissionForm
           addNewMission={this.addNewMission}
         />
         {flights}
         {flightFormDiv}
+      </div>
+      <div>
+        <Link to='/missions'>Back to Dashboard</Link>
       </div>
     </div>
   )

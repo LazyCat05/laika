@@ -10,9 +10,9 @@ const App = props =>{
     <Router history={browserHistory}>
       <Route path='/'>
         <IndexRoute component={FlightContainer} />
+        <Route path="missions" component={MissionDashboard} />
         <Route path="missions/new" component={MissionFormContainer} />
         <Route path="missions/:id" component={MissionShowContainer} />
-        <Route path="missions" component={MissionDashboard} />
       </Route>
     </Router>
   )
