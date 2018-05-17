@@ -4621,6 +4621,10 @@ loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0:
     emojis-list "^2.0.0"
     json5 "^0.5.0"
 
+loadjs@^3.3.1:
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/loadjs/-/loadjs-3.5.4.tgz#ef0f4eb5a6ac2b86c7597a3d4de97b83816e36b8"
+
 locate-path@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-2.0.0.tgz#2b568b265eec944c6d9c0de9c3dbbbca0354cd8e"
@@ -6572,6 +6576,12 @@ react-dom@~15.4.2:
     fbjs "^0.8.1"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+
+react-google-charts@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/react-google-charts/-/react-google-charts-1.6.0.tgz#b58688341f17c81efa76378c168c2f8e3b541c1a"
+  dependencies:
+    loadjs "^3.3.1"
 
 react-router@~3.2.0:
   version "3.2.1"

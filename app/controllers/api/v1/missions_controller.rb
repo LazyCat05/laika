@@ -3,7 +3,6 @@ class Api::V1::MissionsController < ApplicationController
   serialization_scope :current_user
 
   def index
-    # user = current_user
     mission_list = Mission.where(user: current_user)
     render json: mission_list
   end

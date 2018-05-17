@@ -97,6 +97,7 @@ class MissionShowContainer extends React.Component {
         missionName={this.state.mission.name}
         deltaV={this.state.mission.total_delta_v}
         missionDuration={this.state.mission.total_mission_duration}
+        flights={this.state.mission.flights}
       />
     }
 
