@@ -10,9 +10,14 @@ class MissionInfoTile extends React.Component {
   }
 
   render(){
+    console.log(this.props)
     return(
       <div className='small-box-border'>
-        <h3>I'm the Mission Info Tile!</h3>
+        <h3>Mission: {this.props.name}</h3>
+        <div>
+          <h4>Total delta-V: {this.props.deltaV.toFixed(2)}</h4>
+          <h4>Total Flight Duration: {this.props.duration}</h4>
+        </div>
         <FlightInfoTile />
       </div>
     )
