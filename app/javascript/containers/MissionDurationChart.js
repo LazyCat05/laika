@@ -2,26 +2,26 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Chart } from 'react-google-charts';
 
-class DeltaVChart extends React.Component {
+class MissionDurationChart extends React.Component {
   render() {
-    let flightData = [['Flight', 'deltaV']]
+    let flightData = [['Flight', 'Time of Flight']]
     let flights = this.props.flights
     flights.forEach((flight) => {
-      let nameDeltaV = []
-      nameDeltaV.push(flight.name)
-      nameDeltaV.push(flight.delta_v)
-      flightData.push(nameDeltaV)
+      let nameDuration = []
+      nameDuration.push(flight.name)
+      nameDuration.push(flight.time_of_flight)
+      flightData.push(nameDuration)
     })
 
     return (
       <div className='row'>
         <div className='column small-12'>
-          <h4>DeltaV</h4>
+          <h4>Mission Duration</h4>
           <Chart
             chartType="ColumnChart"
             data={flightData}
             options={{legend: 'none', backgroundColor: '#090A11', hAxis: {baselineColor: '#ADD8E6', textStyle: {color: '#ADD8E6'}}, vAxis: {baselineColor: '#ADD8E6', textStyle: {color: '#ADD8E6'}} }}
-            graph_id="MissionDeltaVColumns"
+            graph_id="MissionDurationColumns"
             width="20rem"
             height="20rem"
           />
@@ -31,4 +31,4 @@ class DeltaVChart extends React.Component {
   }
 }
 
-export default DeltaVChart;
+export default MissionDurationChart;
