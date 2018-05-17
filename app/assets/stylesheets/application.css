@@ -21,7 +21,8 @@ body {
   background-image: url('dennis-schweizer-629713-unsplash.jpg');
   background-size: cover;
   background-attachment: fixed;
-  color: #ADD8E6;
+  /* color: #ADD8E6; */
+  color: #090A11;
 }
 
 div {
@@ -31,11 +32,13 @@ div {
 h1, h2, h3, h4 {
   font-family: 'Orbitron', sans-serif;
   color: #ADD8E6;
+  /* color: #090A11; */
 }
 
-h5, h6, p, label {
+h5, h6, p, label, a {
   font-family: 'Exo', sans-serif;
   color: #ADD8E6;
+  /* color: #090A11; */
 }
 
 select, input {
@@ -66,7 +69,8 @@ select, input {
   border: .1rem solid #ADD8E6;
   padding: .5rem;
   margin: .5rem;
-  background-color: #090A11AA;
+  background-color: #090A1188;
+  /* background-color: #ADD8E688; */
 }
 
 .fixed-box {
@@ -79,4 +83,8 @@ select, input {
 
 .coordinate-boxes-right{
   padding-right: 3rem;
+}
+
+.mission-tile {
+  margin: 2rem;
 }

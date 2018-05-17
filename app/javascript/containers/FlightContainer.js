@@ -90,18 +90,19 @@ class FlightContainer extends React.Component {
     }
     return(
       <div className='row'>
-        <div className='columns small-10'>
+        <div className='columns small-10 small-centered'>
           <div>
-            <Link to='missions/new'>Add New Mission</Link>
+            <Link to='missions'>Mission Dashboard</Link>
           </div>
-          <FlightForm
-            addNewFlight = {this.addNewFlight}
-            missionId = {null}
+          <div className="column small-12 large-8 small-centered">
+            <FlightForm
+              addNewFlight = {this.addNewFlight}
+              missionId = {null}
             />
             <div>
               {infoBlock}
-              {saveFlightButton}
             </div>
+          </div>
         </div>
       </div>
     )
