@@ -11,7 +11,11 @@ class MissionDashboard extends React.Component {
   }
 
   componentDidMount(){
-    fetch('/api/v1/missions')
+    fetch('/api/v1/missions', {
+      credentials: 'same-origin',
+      method: 'get',
+      headers: { 'Content-Type': 'application/json'}
+    })
       .then(response => {
         if(response.ok) {
           return response;
@@ -22,6 +26,7 @@ class MissionDashboard extends React.Component {
       })
       .then(response => response.json())
       .then(responseJSON => {
+        console.log(responseJSON)
         this.setState({
           missions: responseJSON.missions
         });
