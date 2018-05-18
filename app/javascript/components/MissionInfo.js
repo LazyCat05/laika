@@ -5,7 +5,7 @@ import MissionDurationChart from '../containers/MissionDurationChart'
 
 const MissionInfo = (props) => {
   return(
-    <div className='row column small-box-border'>
+    <div className='row column small-centered small-box-border'>
       <h3>Mission Details</h3>
       <h5>Mission Name: {props.missionName} </h5>
       <h5>Total delta-v: {props.deltaV.toFixed(2)} meters/second</h5>

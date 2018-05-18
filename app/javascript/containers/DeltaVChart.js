@@ -14,8 +14,7 @@ class DeltaVChart extends React.Component {
     })
 
     return (
-      <div className='row'>
-        <div className='column small-12'>
+        <div className='column small-12 small-centered small-box-border'>
           <h4>DeltaV</h4>
           <Chart
             chartType="ColumnChart"
@@ -26,7 +25,6 @@ class DeltaVChart extends React.Component {
             height="20rem"
           />
         </div>
-      </div>
     );
   }
 }
