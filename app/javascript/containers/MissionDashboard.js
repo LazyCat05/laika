@@ -26,7 +26,6 @@ class MissionDashboard extends React.Component {
       })
       .then(response => response.json())
       .then(responseJSON => {
-        console.log(responseJSON)
         this.setState({
           missions: responseJSON.missions
         });
@@ -46,7 +45,6 @@ class MissionDashboard extends React.Component {
         />
       )
     })
-    console.log(this.state.missions)
     return(
       <div className='expanded row'>
         <div className='row'>

@@ -80,6 +80,7 @@ class MissionFormContainer extends React.Component {
       return(
       <FlightInfo
         key = {flight.id}
+        id = {flight.id}
         name = {flight.name}
         departure_date = {flight.departure_date}
         arrival_date = {flight.arrival_date}
