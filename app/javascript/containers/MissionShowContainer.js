@@ -61,6 +61,28 @@ class MissionShowContainer extends React.Component {
 
   }
 
+  deleteFlight(formPayload) {
+    fetch('api/v1/flights/destroy.json', {
+      credentials: 'same-origin',
+      method: 'delete',
+      headers: { 'Content_Type': 'application/json'},
+      body: JSON.stringify(formPayload)
+    })
+      .then(response => {
+        if(response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`, error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(responseJSON => {
+        this.setState({ message: responseJSON.body })
+      })
+      .catch(error => console.error`Error in fetch: ${error.messsage}`)
+  }
+
 
   render(){
     let flightFormDiv

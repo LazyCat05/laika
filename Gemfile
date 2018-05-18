@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use active model serializer
 gem 'active_model_serializers', '~> 0.10'
+# AWS SDK S3 for storaging background image
+gem 'aws-sdk-s3', require: false
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
