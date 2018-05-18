@@ -18,7 +18,7 @@
 
 body {
   background: #090A11;
-  background-image: url('dennis-schweizer-629713-unsplash.jpg');
+  background-image: url('https://s3.amazonaws.com/laika-app-production/dennis-schweizer-629713-unsplash.jpg');
   background-size: cover;
   background-attachment: fixed;
   color: #090A11;
