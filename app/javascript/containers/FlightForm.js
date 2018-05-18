@@ -47,22 +47,32 @@ class FlightForm extends React.Component {
         <div className="small-box-border">
           <h3>New Flight</h3>
           <form onSubmit={this.handleSubmit}>
-            <PlanetSelectField
-              label="Origin"
-              name="flightOrigin"
-              content={this.state.flightOrigin}
-              handleInput={this.handleOriginSelection}/>
-            <PlanetSelectField
-              label="Destination"
-              name="flightDestination"
-              content={this.state.flightDestination}
-              handleInput={this.handleDestinationSelection}/>
-            <DateField
-              label="Departure Date"
-              name="departureDate"
-              content={this.state.departureDate}
-              handleInput={this.handleDepartureDateSelection}/>
+            <div>
+              <div>
+                <PlanetSelectField
+                  label="Origin"
+                  name="flightOrigin"
+                  content={this.state.flightOrigin}
+                  handleInput={this.handleOriginSelection}/>
+              </div>
+              <div>
+                <PlanetSelectField
+                  label="Destination"
+                  name="flightDestination"
+                  content={this.state.flightDestination}
+                  handleInput={this.handleDestinationSelection}/>
+              </div>
+              <div>
+                  <DateField
+                    label="Departure Date"
+                    name="departureDate"
+                    content={this.state.departureDate}
+                    handleInput={this.handleDepartureDateSelection}/>
+              </div>
+            </div>
+            <div>
               <input type="submit" value="Calculate" />
+            </div>
           </form>
         </div>
       )

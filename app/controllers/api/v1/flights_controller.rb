@@ -42,6 +42,10 @@ class Api::V1::FlightsController < ApplicationController
     render json: new_flight
   end
 
+  def destroy
+    binding.pry
+  end
+
   def save
     data = JSON.parse(request.body.read)
     origin_planet = Planet.where(name: data['flightOrigin'])[0]
