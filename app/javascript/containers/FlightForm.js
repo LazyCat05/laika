@@ -32,13 +32,13 @@ class FlightForm extends React.Component {
 
     handleSubmit(event) {
       event.preventDefault()
-      console.log(this.state.missionId)
       let formPayload = {
         flightOrigin: this.state.flightOrigin,
         flightDestination: this.state.flightDestination,
         departureDate: this.state.departureDate,
         missionId: this.state.missionId
       }
+      console.log(formPayload)
       this.props.addNewFlight(formPayload)
     }
 
