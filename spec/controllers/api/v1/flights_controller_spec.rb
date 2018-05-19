@@ -10,7 +10,6 @@ RSpec.describe Api::V1::FlightsController, type: :controller do
       post(:create, body: post_json)
 
       returned_json = JSON.parse(response.body)
-      binding.pry
       expect(response.status).to eq 200
       expect(response.content_type).to eq('application/json')
 
