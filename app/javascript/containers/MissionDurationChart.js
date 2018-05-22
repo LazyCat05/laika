@@ -14,19 +14,19 @@ class MissionDurationChart extends React.Component {
     })
 
     return (
-      <div className='row'>
-        <div className='column small-12'>
+        <div className='column small-12 small-box-border'>
           <h4>Mission Duration</h4>
-          <Chart
-            chartType="ColumnChart"
-            data={flightData}
-            options={{legend: 'none', backgroundColor: '#090A11', hAxis: {baselineColor: '#ADD8E6', textStyle: {color: '#ADD8E6'}}, vAxis: {baselineColor: '#ADD8E6', textStyle: {color: '#ADD8E6'}} }}
-            graph_id="MissionDurationColumns"
-            width="20rem"
-            height="20rem"
-          />
+          <div>
+            <Chart
+              chartType="ColumnChart"
+              data={flightData}
+              options={{legend: 'none', backgroundColor: '#090A11', hAxis: {baselineColor: '#ADD8E6', textStyle: {color: '#ADD8E6'}}, vAxis: {baselineColor: '#ADD8E6', textStyle: {color: '#ADD8E6'}} }}
+              graph_id="MissionDurationColumns"
+              width="20rem"
+              height="20rem"
+            />
+          </div>
         </div>
-      </div>
     );
   }
 }

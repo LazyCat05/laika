@@ -33,9 +33,21 @@ h1, h2, h3, h4 {
   color: #ADD8E6;
 }
 
-h5, h6, p, label, a {
+h5, h6, p, label, a, td, th {
   font-family: 'Exo', sans-serif;
   color: #ADD8E6;
+}
+
+table thead {
+  background-color: #090A11AA;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #090A11AA;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #090A11AA;
 }
 
 /* h1, h2, h3, h4 {
@@ -77,6 +89,10 @@ select, input {
   padding: .5rem;
   margin: .5rem;
   background-color: #090A1188;
+}
+
+.chart-title {
+  text-align: center;
 }
 
 /* .small-box-border {

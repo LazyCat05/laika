@@ -28,4 +28,4 @@ class DeleteFlightForm extends React.Component {
   }
 }
 
-export default SaveFlightForm;
+export default DeleteFlightForm;
