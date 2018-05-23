@@ -110,12 +110,12 @@ class FlightContainer extends React.Component {
           </div>
         </div>
     }
-    if(this.state.flight.id) {
-      deleteFlightButton = <DeleteFlightForm
-      deleteFlight = {this.deleteFlight}
-      flightId = {this.state.flight.id}
-    />
-  }
+  //   if(this.state.flight.id) {
+  //     deleteFlightButton = <DeleteFlightForm
+  //     deleteFlight = {this.deleteFlight}
+  //     flightId = {this.state.flight.id}
+  //   />
+  // }
     return(
       <div className='row'>
         <div className='columns small-12 small-centered'>

@@ -1,5 +1,6 @@
 import React from 'react'
 import PositionChart from './PositionChart'
+import DeleteFlightForm from './DeleteFlightForm'
 
 const FlightInfo = (props) => {
   return (
@@ -44,6 +45,10 @@ const FlightInfo = (props) => {
           </div>
         </div>
       </div>
+      <DeleteFlightForm
+        flightId={props.id}
+        deleteFlight={props.deleteFlight}
+      />
     </div>
   )
 }

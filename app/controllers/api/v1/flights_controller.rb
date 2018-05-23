@@ -43,6 +43,13 @@ class Api::V1::FlightsController < ApplicationController
   end
 
   def destroy
+    data = JSON.parse(request.body.read)
+    flight = Flight.find(data["flightId"])
+    mission_id = flight.mission.id
+    flight.destroy
+    mission = Mission.find(mission_id)
+
+    render json: mission
     binding.pry
   end
 

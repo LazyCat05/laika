@@ -12,6 +12,7 @@ class MissionShowContainer extends React.Component {
       errorMessage: ''
     }
     this.addNewFlight = this.addNewFlight.bind(this)
+    this.delteFlight = this.deleteFlight.bind(this)
   }
 
   componentDidMount(){
@@ -62,7 +63,7 @@ class MissionShowContainer extends React.Component {
   }
 
   deleteFlight(formPayload) {
-    fetch('api/v1/flights/destroy.json', {
+    fetch(`/api/v1/flights/${formPayload.flightId}.json`, {
       credentials: 'same-origin',
       method: 'delete',
       headers: { 'Content_Type': 'application/json'},
@@ -78,7 +79,10 @@ class MissionShowContainer extends React.Component {
       })
       .then(response => response.json())
       .then(responseJSON => {
-        this.setState({ message: responseJSON.body })
+        console.log(responseJSON)
+        this.setState({
+          flights: responseJSON.mission.flights
+        })
       })
       .catch(error => console.error`Error in fetch: ${error.messsage}`)
   }
@@ -110,6 +114,7 @@ class MissionShowContainer extends React.Component {
         angularSeparation = {flight.angular_separation}
         launchDate = {flight.launch_date}
         flight_time = {flight.time_of_flight}
+        deleteFlight = {this.deleteFlight}
       />
     )
     })
