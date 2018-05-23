@@ -27,9 +27,11 @@ The rails server can then be started with:
 
 rails s
 
-Laika uses React.js for the front end, except for user authentication, which is handled by Devise. Database is PostgreSQL. Server is built with Rails 5.2.0 and Ruby 2.3.3. All of the positioning calculations are performed on the server side, with data from from the Jet Propulsion Laboratories Solar System Dynamic page (https://ssd.jpl.nasa.gov/?planet_pos). Note that this data is in ASCII, not JSON. The formulae that Laika uses are also found on SSD page, in the PDF at https://ssd.jpl.nasa.gov/txt/aprx_pos_planets.pdf. I would not have been able to create Laika without these resources. The Rocket and Spaceflight Technology page (http://www.braeunig.us/space/) and Atomic Rockets (http://www.projectrho.com/public_html/rocket/index.php) were also invaluable in developing Laika. I hope to make more calculators using the excellent resources from all of these sources in the futuer.
+The page can be accessed at localhost:3000.
 
-Laika's trajectories should be taken with a grain of salt -- they assume circular, co-planer orbits, while the planetary positions are calculated as elliptical and inclined. If you plan on sending a spacecraft, I would recommend using a more precise calculator.
+Laika uses React.js for the front end, except for user authentication, which is handled by Devise. Database is PostgreSQL. Server is built with Rails 5.2.0 and Ruby 2.3.3. All of the positioning calculations are performed on the server side, with data from from the Jet Propulsion Laboratories Solar System Dynamic page (https://ssd.jpl.nasa.gov/?planet_pos). Note that this data is in ASCII, not JSON. The formulae that Laika uses are also found on SSD page, in the PDF at https://ssd.jpl.nasa.gov/txt/aprx_pos_planets.pdf. I would not have been able to create Laika without these resources. The Rocket and Spaceflight Technology page (http://www.braeunig.us/space/), Computing Planetary Positions - a tutorial with worked examples (http://www.stjarnhimlen.se/comp/tutorial.html), and Atomic Rockets (http://www.projectrho.com/public_html/rocket/index.php) were all invaluable in developing Laika. I hope to make more calculators using the excellent resources from all of these sources in the future.
+
+Laika's trajectories should be taken with a grain of salt -- they assume circular, co-planer orbits, while the planetary positions are calculated as elliptical and inclined. If you plan on sending a spacecraft to any of these destinations, I would recommend using a more precise calculator.
 
 Since Laika was built as the culmination of my time at Launch Academy (https://launchacademy.com/), it would not have been possible without the help of my cohort-mates and the experience engineers on staff, especially:
 
