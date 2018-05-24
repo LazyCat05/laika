@@ -34,6 +34,7 @@ class Api::V1::FlightsController < ApplicationController
     if new_flight.valid?
       new_flight.save
       mission = new_flight.mission
+      #next three lines could be refactored into a mission update method
       mission.total_delta_v = mission.calc_mission_delta_v
       mission.total_mission_duration = mission.calc_mission_duration
       mission.save
@@ -43,5 +44,16 @@ class Api::V1::FlightsController < ApplicationController
   end
 
   def destroy
+    data = JSON.parse(request.body.read)
+    flight = Flight.find(data["flightId"])
+    mission_id = flight.mission.id
+    flight.destroy
+    mission = Mission.find(mission_id)
+    #could be refactored into a mission_update method
+    mission.total_delta_v = mission.calc_mission_delta_v
+    mission.total_mission_duration = mission.calc_mission_duration
+    mission.save
+
+    render json: mission
   end
 end

@@ -4,7 +4,7 @@ class DeleteFlightForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      flightId: this.props.flight.id,
+      flightId: this.props.flightId,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -12,7 +12,7 @@ class DeleteFlightForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     let formPayload = {
-      flightId: this.state.flight.id
+      flightId: this.state.flightId
     }
     this.props.deleteFlight(formPayload)
   }
