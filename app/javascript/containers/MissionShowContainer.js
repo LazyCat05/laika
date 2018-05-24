@@ -12,7 +12,7 @@ class MissionShowContainer extends React.Component {
       errorMessage: ''
     }
     this.addNewFlight = this.addNewFlight.bind(this)
-    this.delteFlight = this.deleteFlight.bind(this)
+    this.deleteFlight = this.deleteFlight.bind(this)
   }
 
   componentDidMount(){
@@ -79,8 +79,8 @@ class MissionShowContainer extends React.Component {
       })
       .then(response => response.json())
       .then(responseJSON => {
-        console.log(responseJSON)
         this.setState({
+          mission: responseJSON.mission,
           flights: responseJSON.mission.flights
         })
       })

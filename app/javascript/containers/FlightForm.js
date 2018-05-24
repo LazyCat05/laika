@@ -32,7 +32,6 @@ class FlightForm extends React.Component {
 
     handleSubmit(event) {
       event.preventDefault()
-      console.log(this.state.missionId)
       let formPayload = {
         flightOrigin: this.state.flightOrigin,
         flightDestination: this.state.flightDestination,
