@@ -12,7 +12,6 @@ class FlightContainer extends React.Component {
       message: null
     }
     this.addNewFlight = this.addNewFlight.bind(this)
-    // this.saveFlight = this.saveFlight.bind(this)
     this.deleteFlight = this.deleteFlight.bind(this)
   }
 
@@ -63,29 +62,6 @@ class FlightContainer extends React.Component {
       .catch(error => console.error`Error in fetch: ${error.messsage}`)
   }
 
-
-  // saveFlight(formPayload) {
-  //   fetch('api/v1/flights/save.json', {
-  //     credentials: 'same-origin',
-  //     method: 'post',
-  //     headers: { 'Content_Type': 'application/json'},
-  //     body: JSON.stringify(formPayload)
-  //   })
-  //     .then(response => {
-  //       if(response.ok) {
-  //         return response;
-  //       } else {
-  //         let errorMessage = `${response.status} (${response.statusText})`, error = new Error(errorMessage);
-  //         throw(error);
-  //       }
-  //     })
-  //     .then(response => response.json())
-  //     .then(responseJSON => {
-  //       this.setState({ message: responseJSON.body })
-  //     })
-  //     .catch(error => console.error`Error in fetch: ${error.messsage}`)
-  // }
-
   render() {
     let infoBlock
     let deleteFlightButton
@@ -110,12 +86,7 @@ class FlightContainer extends React.Component {
           </div>
         </div>
     }
-  //   if(this.state.flight.id) {
-  //     deleteFlightButton = <DeleteFlightForm
-  //     deleteFlight = {this.deleteFlight}
-  //     flightId = {this.state.flight.id}
-  //   />
-  // }
+
     return(
       <div className='row'>
         <div className='columns small-12 small-centered'>
