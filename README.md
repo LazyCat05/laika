@@ -5,25 +5,38 @@
 
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Laika - Astronomical Calculator and Simulation Toy
 
-Things you may want to cover:
+Laika is an astronomical calculator and trajectory simulator, built as a final project for my time at Launch Academy.
 
-* Ruby version
+Laika takes two planets and a date from the user, and returns the position of those two planets in heliocentric rectangular coordinates. It also calculates a Hohmann trajectory between the first and second planet with a launch window and required delta-V.
 
-* System dependencies
+Flights can be calculated without logging in, but can only be saved (as parts of a mission) by a logged in user.
 
-* Configuration
+Laika has very little configuration necessary, but the seed data is essential for performing calculations.
 
-* Database creation
+Before running Laika, be sure to:
 
-* Database initialization
+rake db:create
+rake db:migrate
+rake db:seed
 
-* How to run the test suite
+Without the seed data, Laika can't perform any calculations, and as of the current version, there is no html form to input planetary data. So use the seed data, because it's super tedious to try and enter all those values in the command line.
 
-* Services (job queues, cache servers, search engines, etc.)
+The rails server can then be started with:
 
-* Deployment instructions
+rails s
 
-* ...
+The page can be accessed at localhost:3000.
+
+Laika uses React.js for the front end, except for user authentication, which is handled by Devise. Database is PostgreSQL. Server is built with Rails 5.2.0 and Ruby 2.3.3. All of the positioning calculations are performed on the server side, with data from from the Jet Propulsion Laboratories Solar System Dynamic page (https://ssd.jpl.nasa.gov/?planet_pos). Note that this data is in ASCII, not JSON. The formulae that Laika uses are also found on SSD page, in the PDF at https://ssd.jpl.nasa.gov/txt/aprx_pos_planets.pdf. I would not have been able to create Laika without these resources. The Rocket and Spaceflight Technology page (http://www.braeunig.us/space/), Computing Planetary Positions - a tutorial with worked examples (http://www.stjarnhimlen.se/comp/tutorial.html), and Atomic Rockets (http://www.projectrho.com/public_html/rocket/index.php) were all invaluable in developing Laika. I hope to make more calculators using the excellent resources from all of these sources in the future.
+
+Laika's trajectories should be taken with a grain of salt -- they assume circular, co-planer orbits, while the planetary positions are calculated as elliptical and inclined. If you plan on sending a spacecraft to any of these destinations, I would recommend using a more precise calculator.
+
+Since Laika was built as the culmination of my time at Launch Academy (https://launchacademy.com/), it would not have been possible without the help of my cohort-mates and the experience engineers on staff, especially:
+
+* AmyLynn Arrington (github.com/AL6981)
+* Nick Alberts (github.com/nwalberts)
+* Brianna Kincart (github.com/bkincart)
+
+Laika will probably go quiet for a while, but hopefully I'll be able to update it in the future with a better trajectory calculator and a way to access asteroid orbital characteristics from NASA or the IAU MPC.

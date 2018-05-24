@@ -38,6 +38,7 @@ class FlightForm extends React.Component {
         departureDate: this.state.departureDate,
         missionId: this.state.missionId
       }
+      console.log(formPayload)
       this.props.addNewFlight(formPayload)
     }
 
