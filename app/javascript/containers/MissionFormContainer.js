@@ -33,6 +33,7 @@ class MissionFormContainer extends React.Component {
     })
     .then(response => response.json())
     .then(responseJSON => {
+      console.log(responseJSON)
       this.setState({
         mission: responseJSON.mission,
         flights: []
