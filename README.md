@@ -17,6 +17,10 @@ Laika has very little configuration necessary, but the seed data is essential fo
 
 Before running Laika, be sure to:
 
+`bundle install`
+
+`yarn install`
+
 `rake db:create`
 
 `rake db:migrate`
@@ -24,6 +28,10 @@ Before running Laika, be sure to:
 `rake db:seed`
 
 Without the seed data, Laika can't perform any calculations, and as of the current version, there is no html form to input planetary data. So use the seed data, because it's super tedious to try and enter all those values in the command line.
+
+If you really want to run the test suite:
+
+`rake`
 
 The rails server can then be started with:
 
