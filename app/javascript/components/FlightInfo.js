@@ -3,12 +3,16 @@ import PositionChart from './PositionChart'
 import DeleteFlightForm from './DeleteFlightForm'
 
 const FlightInfo = (props) => {
+  let departure_date = new Date (props.departure_date)
+  departure_date = departure_date.toLocaleDateString()
+  console.log(departure_date)
+  debugger
   return (
     <div className='row small-box-border'>
       <div className='column'>
         <div className='row'>
           <h4>Flight: {props.name}</h4>
-          <h5>Proposed Date: {props.departure_date}</h5>
+          <h5>Proposed Date: {departure_date}</h5>
           <h5>Launch Date: {props.launchDate}</h5>
           <h5>Arrival Date: {props.arrival_date}</h5>
         </div>
